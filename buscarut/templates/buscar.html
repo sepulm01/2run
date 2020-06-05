@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+}
+
+</style>
+<body class="text-center">
+
+
+<div class="container d-flex justify-content-center">
+
+        <div class="jumbotron container"> 
+            <h2 >Puedes buscar el rut con su nombre, o vice versa</h2>
+            <div id="Tabs" role="tabpanel">
+                    <ul class="nav nav-tabs text-center" role="tablist">
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#apellido" aria-controls="apellido" role="tab" data-toggle="tab">por Nombre Apellido</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#rut" aria-controls="rut" role="tab" data-toggle="tab"> por RUT</a></li>
+                    </ul>
+                    <div class="tab-content" style="padding-top: 20px">
+                        <div role="tabpanel" class="tab-pane active" id="apellido">
+                            <form id="valid" role="form" class="search" method="post" >{% csrf_token %}
+                                <div class="input-group input-group-lg" >
+                                    <input type="text" placeholder="Buscar por Nombre y Apellido de una persona" name="term" class="form-control">
+                                    <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-primary" value="Buscar">
+                                    </span>
+                                    </div>
+                                    <h6><i><b>TIP:</b> Puedes buscar sin importar el orden de sus nombres o apellidos.</i></h6>
+                            </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="rut">
+                            <form id="formato-live" novalidate="novalidate" role="form" class="search" method="post" >{% csrf_token %}
+                                <div class="input-group input-group-lg">
+                                    <input type="text, number" input-mode="numeric" pattern="[0-9]*" placeholder="Buscar por RUT" name="term"  class="form-control">
+                                    <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-primary" value="Buscar">
+                                    </span>
+                                </div>  
+                                <h6><i><b>TIP:</b> Si <u>no</u> sabes el digito verificador (o termina en -K), reemplázalo por un cero (0)</i></h6>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    <div class="cookie-container">
+      <p>
+        Utilizamos cookies en este sitio web para brindarle la mejor experiencia en nuestro sitio y mostrarle anuncios relevantes. Toda la información brindada en este sitio ha sido obtenida de manera gratuita, y de fuentes abiertas que están disponibles en internet, através de otros sitios que operan publicamente en la red. </p><p>
+        Antes de utilizar este sitio, le pedimos que acepte la condición de uso exclusivamente con fines personales de la información desplegada. 
+      </p>
+      <button class="cookie-btn">
+        Aceptar
+      </button>
+    </div>
+
+    <script src="{% static "js/main.js" %}"></script>
+    <!-- RUT live formatting -->
+    <script type="text/javascript">
+        $(function(){
+        $("form#formato-live input").rut({formatOn: 'keyup'});
+        });
+    </script> 
+</body>
+{% endblock content %}
+
+
