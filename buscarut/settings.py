@@ -25,7 +25,7 @@ SECRET_KEY = '=5)wtvdp$k&pzzrzlzgzi*g0bb@c%2sv(keykhx=)2wcho@!a5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.70.113.160', '127.0.0.1']
+ALLOWED_HOSTS = ['www.buscaper.com','34.70.113.160', '127.0.0.1']
 
 
 # Application definition
