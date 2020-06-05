@@ -22,7 +22,7 @@ from buscar.views import buscar, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('buscar/', buscar, name='buscar'),
+    path('', buscar, name='buscar'),
     path('resultado/', TemplateView.as_view(template_name="resultado.html")),
-    path('', home, name='home'),
+    #path('', home, name='home'),
 ]
