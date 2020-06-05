@@ -29,3 +29,6 @@ def buscar(request):
     'form': form,
      }
     return render(request, 'buscar.html', campos)
+
+def home(request):
+    return redirect('/buscar/')

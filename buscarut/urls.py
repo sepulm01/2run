@@ -18,10 +18,11 @@ from django.urls import path
 
 from django.conf.urls import include, url
 from django.views.generic import TemplateView
-from buscar.views import buscar
+from buscar.views import buscar, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('buscar/', buscar, name='buscar'),
     path('resultado/', TemplateView.as_view(template_name="resultado.html")),
+    path('', home, name='home'),
 ]
