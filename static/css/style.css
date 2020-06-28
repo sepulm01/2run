@@ -29,7 +29,7 @@ p {
 }
 
 .cookie-container.active {
-  bottom: 0;
+  bottom: 50;
 }
 
 .cookie-container a {
