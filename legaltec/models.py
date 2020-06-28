@@ -1,0 +1,31 @@
+from django.db import models
+
+# Create your models here.
+
+def my_awesome_upload_function(instance, filename):
+    return 'lead_{0}/{1}'.format(instance.pk, filename)
+
+class lead(models.Model):
+    nombre = models.CharField("Nombre",max_length=30)
+    direccion = models.CharField("Direccion",max_length=90)
+    fono = models.CharField("Fono",max_length=20)
+    mail = models.CharField("email",max_length=40)
+    poliza = models.FileField('Poliza',upload_to=my_awesome_upload_function,blank=True, null=True)
+    extracto = models.TextField(blank=True, null=True)
+    estado = models.BooleanField('Revisado',default=False)
+
+
+    class Meta:
+        verbose_name_plural = "leads"
+
+    def __str__(self):
+        return str(self.nombre)
+
+class Preguntas(models.Model):
+    pregunta = models.CharField("Pregunta",max_length=120)
+
+    class Meta:
+        verbose_name_plural = "Preguntas"
+
+    def __str__(self):
+        return str(self.pregunta)
