@@ -12,7 +12,7 @@ admin.site.site_title = 'LegalTec'
 @admin.register(lead)
 class LeadAdmin(admin.ModelAdmin):
     actions = [clasifica]
-    list_display = ['nombre','estado','direccion','fono','mail','poliza',]
+    list_display = ['nombre','estado','direccion','fono','mail','poliza','aseguradora',]
 
 @admin.register(Preguntas)
 class PreguntaAdmin(admin.ModelAdmin):

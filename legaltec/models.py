@@ -13,6 +13,7 @@ class lead(models.Model):
     poliza = models.FileField('Poliza',upload_to=my_awesome_upload_function,blank=True, null=True)
     extracto = models.TextField(blank=True, null=True)
     estado = models.BooleanField('Revisado',default=False)
+    aseguradora = models.ForeignKey('Aseguradora', on_delete=models.PROTECT)
 
 
     class Meta:

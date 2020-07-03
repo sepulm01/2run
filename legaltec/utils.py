@@ -27,10 +27,12 @@ def questions(contexto='', pregunta=''):
         print('Engine is down')
 
 def clasifica(self,_,  poliza='POLIZA ALLIANZ.pdf',):
-    preguntas = Preguntas.objects.all()
+    #preguntas = Preguntas.objects.all()
     #pregunta = "puede designar?"
     for pol in poliza:
         #text = textract.process(pol.poliza.path, method='pdfminer')
+        print(pol.aseguradora)
+        preguntas = Preguntas.objects.filter(aseguradora=pol.aseguradora)
         text = textract.process(pol.poliza.path)
         text=text.decode("utf-8")
         text1 = re.sub('\r?\n', ' ', text)
