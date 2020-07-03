@@ -21,8 +21,18 @@ class lead(models.Model):
     def __str__(self):
         return str(self.nombre)
 
+class Aseguradora(models.Model):
+    aseguradora = models.CharField("Aseguradora",max_length=120)
+
+    class Meta:
+        verbose_name_plural = "Aseguradoras"
+
+    def __str__(self):
+        return str(self.aseguradora)
+
 class Preguntas(models.Model):
     pregunta = models.CharField("Pregunta",max_length=120)
+    aseguradora = models.ForeignKey('Aseguradora', on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = "Preguntas"

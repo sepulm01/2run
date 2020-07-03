@@ -17,4 +17,8 @@ class LeadAdmin(admin.ModelAdmin):
 @admin.register(Preguntas)
 class PreguntaAdmin(admin.ModelAdmin):
     actions = [clasifica]
-    list_display = ['pregunta',]
+    list_display = ['pregunta','aseguradora',]
+
+@admin.register(Aseguradora)
+class AseguradoraAdmin(admin.ModelAdmin):
+    list_display = ['aseguradora',]
