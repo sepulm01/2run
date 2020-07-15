@@ -42,15 +42,15 @@ def clasifica(self,_,  poliza='POLIZA ALLIANZ.pdf',):
             for pag in paginas:
                 #a = model_qa([pag], [preg.pregunta])
                 a = questions(pag, preg.pregunta)
-
-                if len(a[0]) > 0:
-                    doc=nlp(pag)
-                    frase = a[0]
-                    for oraciones in doc.sents:
-                        val = oraciones.text.find(frase)
-                        if val>0:
-                            #print( type(oraciones.text),a[0][0])
-                            texto = texto +' PREGUNTA: '+ preg.pregunta+'\n' +' - SEGMENTO: '+a[0] +'\nEXTRACTO: '+oraciones.text +  '\n\n'
+                if a != None:
+                    if len(a[0]) > 0:
+                        doc=nlp(pag)
+                        frase = a[0]
+                        for oraciones in doc.sents:
+                            val = oraciones.text.find(frase)
+                            if val>0:
+                                #print( type(oraciones.text),a[0][0])
+                                texto = texto +' PREGUNTA: '+ preg.pregunta+'\n' +' - SEGMENTO: '+a[0] +'\nEXTRACTO: '+oraciones.text +  '\n\n'
         pol.extracto = texto
         print(texto)
         pol.estado = True
