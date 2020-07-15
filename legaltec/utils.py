@@ -31,7 +31,7 @@ def clasifica(self,_,  poliza='POLIZA ALLIANZ.pdf',):
     #pregunta = "puede designar?"
     for pol in poliza:
         #text = textract.process(pol.poliza.path, method='pdfminer')
-        print(pol.aseguradora)
+        #print(pol.aseguradora)
         preguntas = Preguntas.objects.filter(aseguradora=pol.aseguradora)
         text = textract.process(pol.poliza.path)
         text=text.decode("utf-8")

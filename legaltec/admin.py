@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 from .utils import clasifica
+from .tasks import c_clasifica
 
 # Register your models here.
 admin.site.site_header = "LegalTec"
@@ -11,7 +12,7 @@ admin.site.site_title = 'LegalTec'
 
 @admin.register(lead)
 class LeadAdmin(admin.ModelAdmin):
-    actions = [clasifica]
+    actions = [c_clasifica]
     list_display = ['nombre','estado','direccion','fono','mail','poliza','aseguradora',]
 
 @admin.register(Preguntas)
