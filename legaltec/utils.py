@@ -3,6 +3,7 @@ import textract
 import re
 import spacy
 import requests
+from .tasks import c_questions, procesa
 from .models import *
 nlp = spacy.load("es_core_news_sm")
 
@@ -26,7 +27,7 @@ def questions(contexto='', pregunta=''):
     except: 
         print('Engine is down')
 
-def clasifica(self,_,  poliza='POLIZA ALLIANZ.pdf',):
+def clasifica(self,_,  poliza):
     #preguntas = Preguntas.objects.all()
     #pregunta = "puede designar?"
     for pol in poliza:
@@ -55,6 +56,22 @@ def clasifica(self,_,  poliza='POLIZA ALLIANZ.pdf',):
         print(texto)
         pol.estado = True
         pol.save()
+
+def clasi_new(slef,_,poliza):
+    polizas = {}
+    for pol in poliza:
+        lista = {}
+        preguntas = Preguntas.objects.filter(aseguradora=pol.aseguradora)
+        lista['path']=pol.poliza.path
+        pregun = []
+        for preg in preguntas:
+            pregun.append(preg.pregunta)
+        lista['quest']=pregun
+        polizas[pol.pk]=lista
+    procesa.delay(polizas)
+
+
+
 
 
 '''
