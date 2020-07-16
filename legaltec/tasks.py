@@ -25,7 +25,8 @@ def c_clasifica(self,_, poliza):
 
 
 def c_questions(contexto='', pregunta=''):
-    url = 'http://127.0.0.1:5555/model'
+    #url = 'http://127.0.0.1:5555/model' #
+    url = 'http://10.128.0.12:5555/model'
     data = {}
     data['context_raw']=[contexto]
     data['question_raw']=[pregunta]
