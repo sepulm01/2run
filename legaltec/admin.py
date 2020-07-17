@@ -23,3 +23,8 @@ class PreguntaAdmin(admin.ModelAdmin):
 @admin.register(Aseguradora)
 class AseguradoraAdmin(admin.ModelAdmin):
     list_display = ['aseguradora',]
+
+@admin.register(Segmento)
+class SegAdmin(admin.ModelAdmin):
+    list_display = ['segmento',]
+
